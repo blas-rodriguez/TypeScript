@@ -125,18 +125,51 @@
 
 // clase 8 intersection types
 
-interface Interface1{
-    prop1:number;
-}
-interface Interface2{
-    prop2:number;
-    prop3:number;
+// interface Interface1{
+//     prop1:number;
+// }
+// interface Interface2{
+//     prop2:number;
+//     prop3:number;
+// }
+
+// type InterfaceMix =Interface1 & Interface2;
+
+// const interfaceMix: InterfaceMix ={
+//     prop1:2,
+//     prop2:2,
+//     prop3:2
+// }
+
+// clase 9 function type
+// type CallBackError =Error | null;
+// type CallBack = (error: CallBackError, reponse: object) => void;
+
+// function sendRequest(cb:CallBack):void {
+//     if(cb){
+//         cb(null,{message:'todo salio como lo planeamos'});
+//     }
+// }
+
+// clase 10 decorators
+
+function log(target, key) {
+    console.log(key + 'se ha llamado');
 }
 
-type InterfaceMix =Interface1 & Interface2;
+class Persona {
+    private name:string;
 
-const interfaceMix: InterfaceMix ={
-    prop1:2,
-    prop2:2,
-    prop3:2
+    constructor(name:string){
+        this.name=name;
+    }
+    @log
+    sayMyName(){
+        // return this.name;
+        console.log( this.name);
+        
+    }
 }
+
+const persona : Persona = new Persona('alan');
+persona.sayMyName(); //'alan'
